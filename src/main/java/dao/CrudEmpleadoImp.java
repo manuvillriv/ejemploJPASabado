@@ -42,14 +42,26 @@ public class CrudEmpleadoImp implements Iempleadoable{
 
 	@Override
 	public List<TblEmpleado> ListadoEmpleado() {
-		// TODO Auto-generated method stub
-		return null;
+		// ESTABLECER CONEXION CON LA UNIDAD DE PERSISTENCIA
+		EntityManagerFactory factory=Persistence.createEntityManagerFactory("proyectoLPIISabado");
+		EntityManager em=factory.createEntityManager();
+		em.getTransaction().begin();
+		// LISTADO
+		List<TblEmpleado> listado=em.createQuery("select e from TblEmpleado e", TblEmpleado.class).getResultList();
+		// CONFIRMAMOS...
+		em.getTransaction().commit();
+		//cerramos...
+		em.close();
+		return listado;		
 	}
 
 	@Override
 	public TblEmpleado BuscarEmpleado(TblEmpleado tbemp) {
-		// TODO Auto-generated method stub
+		
 		return null;
+		
+		
+		
 	}
 
 }
